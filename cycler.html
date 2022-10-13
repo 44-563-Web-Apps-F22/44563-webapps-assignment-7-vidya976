@@ -50,6 +50,7 @@
         <button class="btn btn-warning" type="submit" onclick="makeNewDiv()">Add Value</button>
         <button class="btn btn-danger" type="submit" onclick="get()">Get</button>
         <button class="btn btn-success" type="submit" onclick="spin()">Spin</button>
+        <button class="btn btn-success" type="submit" onclick="swap()">Swap</button>
     </div>
     </div>
 
@@ -81,6 +82,16 @@
                 let container = document.getElementById("target")
                 container.insertBefore(removedItem, container.firstChild)
             }
+        }
+        function swap() {
+            let cyclerItems = document.getElementsByClassName('cycler');
+            let cyclersSize = cyclerItems.length;
+            let nodeA = cyclerItems[Math.round(Math.random() * (cyclersSize - 1))]
+            let nodeB = cyclerItems[Math.round(Math.random() * (cyclersSize - 1))]
+            const parentA = nodeA.parentNode;
+            const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
+            nodeB.parentNode.insertBefore(nodeA, nodeB);
+            parentA.insertBefore(nodeB, siblingA);
         }
     </script>
 </body>
